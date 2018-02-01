@@ -1,14 +1,14 @@
 
 # coding: utf-8
 
-# In[124]:
+# In[25]:
 
 
 from os import path
 import glob
 
 
-# In[125]:
+# In[26]:
 
 
 def getFileFolders(p):
@@ -25,7 +25,7 @@ def getFileFolders(p):
     return [files,folders];
 
 
-# In[126]:
+# In[27]:
 
 
 def getAllFiles(p):
@@ -41,25 +41,25 @@ def getAllFiles(p):
     return list(set(files))
 
 
-# In[127]:
+# In[28]:
 
 
 def getHtmlFiles(fold):
     allfiles = getAllFiles(fold)
-    html=[]
+    fh = open(fold+"/links.json", "w")
+    fh.write("data = [");
     for i in allfiles:
         if i.endswith(".html"):
-            html.append(i.replace(fold,""))
-    fh = open(fold+"/links.txt", "w")
-    for i in html:
-        fh.write(i+"\n")
+            ld = "{\"link\":\""+i.replace(fold,"")+"\"},"
+            fh.write(ld+"\n");
+    fh.write("]")
     fh.close()
     #html
 
 
-# In[128]:
+# In[29]:
 
 
-fold = raw_input("enter the path of root folder\n '\\' wont work, use '/' instead.")
+fold = raw_input("enter the path of root folder\n '\\' wont work, use '/' instead.\n")
 getHtmlFiles(fold)
 
