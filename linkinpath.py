@@ -50,7 +50,7 @@ def getHtmlFiles(fold):
     fh.write("data = [");
     for i in allfiles:
         if i.endswith(".html"):
-            ld = "{\"link\":\""+i.replace(fold,"")+"\"},"
+            ld = "{\"link\":\""+i.replace(fold+"/","")+"\"},"
             fh.write(ld+"\n");
     fh.write("]")
     fh.close()
@@ -59,7 +59,7 @@ def getHtmlFiles(fold):
 
 # In[29]:
 
-
-fold = raw_input("enter the path of root folder\n '\\' wont work, use '/' instead.\n")
+#"enter the path of root folder\n '\\' wont work, use '/' instead.\n"
+fold = raw_input()
 getHtmlFiles(fold)
 
